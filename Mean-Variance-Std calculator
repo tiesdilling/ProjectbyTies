@@ -1,0 +1,40 @@
+def calculate(list):
+    if len(list) > 9 :
+        return "List must contain nine numbers."
+    
+    if len(list) < 9 :
+        return "List must contain nine numbers."
+    
+    calculation = np.array(list).reshape(3,3)
+
+    lstmean = []
+    lstvar = []
+    lststd = []
+    lstmax = []
+    lstmin = []
+    lstsum = []
+    
+    for i in range(2) :
+        mean = calculation.mean(axis = i)
+        lstmean.append([mean[0],mean[1],mean[2]])
+        var = calculation.var(axis = i)
+        lstvar.append([var[0],var[1],var[2]])    
+        std = calculation.std(axis = i)
+        lststd.append([std[0],std[1],std[2]])
+        maximum = calculation.max(axis = i)
+        lstmax.append([maximum[0],maximum[1],maximum[2]])
+        minimum = calculation.min(axis = i)
+        lstmin.append([minimum[0],minimum[1],minimum[2]])
+        sumation = calculation.sum(axis = i)
+        lstsum.append([sumation[0],sumation[1],sumation[2]])
+        
+    lstmean.append(calculation.mean())
+    lstvar.append(calculation.var())
+    lststd.append(calculation.std())
+    lstmax.append(calculation.max())
+    lstmin.append(calculation.min())
+    lstsum.append(calculation.sum())
+    
+    calculations = {"mean" : lstmean, "variance" : lstvar, "standard deviation" : lststd, "max" : lstmax, "min" : lstmin, "sum" : lstsum}
+    
+    return calculations
