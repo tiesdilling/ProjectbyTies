@@ -22,6 +22,8 @@ returns = []
 stds = []
 w = []
 
+print(df.shape)
+
 for i in range(1000) :
     weights = weightscreator(df)
     returns.append(portfolioreturn(weights))
